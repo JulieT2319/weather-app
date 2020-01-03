@@ -10,9 +10,64 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <!-- Custom styles sidebar template used written by Start Bootstrap -->
+    <link href="styles/simple-sidebar.css" rel="stylesheet" />
+
+    <link href="styles/style.css" rel="stylesheet" />
     <title>Weather Search</title>
   </head>
   <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">Previously Searched Cities</div>
+        <div class="list-group list-group-flush" id="cities-searched"></div>
+      </div>
+      <!-- /#sidebar-wrapper -->
+
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav
+          class="navbar navbar-expand-lg navbar-light bg-light border-bottom"
+        >
+          <button class="btn" id="menu-toggle">
+            Toggle Previous Searches
+          </button>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <form class="form-inline my-2 my-lg-0">
+                <input
+                  class="form-control mr-sm-2"
+                  type="search"
+                  placeholder="City"
+                  aria-label="Search"
+                />
+                <button class="btn" type="submit">
+                  What's the weather?
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+        <div class="container-fluid"></div>
+      </div>
+      <!-- /#page-content-wrapper -->
+    </div>
+    <!-- Menu Toggle Script -->
+
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
       integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -29,5 +84,12 @@
       crossorigin="anonymous"
     ></script>
     <script src="scripts/script.js"></script>
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+    s
   </body>
 </html>
