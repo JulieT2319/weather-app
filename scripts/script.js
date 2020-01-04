@@ -1,6 +1,9 @@
 var weatherApiKey = "44b3433340eb70a32f38740161f053dc"; //
 var citySearch = "";
-var cityArray = [];
+var cityArray = JSON.parse(localStorage.getItem("citiesSearched"));
+if (cityArray === null) {
+	cityArray = [];
+}
 
 function currentWeather() {
 	var currentWeatherQuery =
@@ -25,9 +28,20 @@ function addCityButtons() {
 		city.addClass("btn btn-outline-info");
 		city.attr("data-city", cityArray[i]);
 		city.text(cityArray[i]);
-		$("#cities-searched").append(city);
-
+		$("#cities-searched").prepend(city);
 	}
 
 }
 
+$("#find-city").on("click", function (event) {
+	event.preventDefault();
+	var city = $("#city").val().trim();
+	if (city !== "") {
+		citySearch = city;
+		cityArray.push(city);
+	}
+	addCityButtons();
+	localStorage.setItem("citiesSearched", JSON.stringify(cityArray));
+})
+
+addCityButtons();
