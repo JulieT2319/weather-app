@@ -64,6 +64,50 @@ function currentWeather() {
 };
 
 
+function forecastWeather() {
+	var forcastWeatherQuery =
+		"https://api.openweathermap.org/data/2.5/forecast?q=" +
+		citySearch +
+		"&APPID=" +
+		weatherApiKey + "&units=imperial";
+
+	$.ajax({
+		url: forcastWeatherQuery,
+		method: "GET"
+	}).then(function (forecast) {
+		var header = $("<h2>").html("Five Day Forecast:");
+		$(header).attr("class", "col-12")
+		$("#header").append(header);
+		console.log(forecast);
+		for (i = 7; i < forecast.list.length; i += 8) {
+			var response = forecast.list[i];
+			var icon = response.weather[0].icon;
+			var weatherDesc = response.weather[0].description;
+			var weatherMain = response.weather[0].main;
+			var date = moment.unix((response.dt)).format("dddd, MMMM Do YYYY");
+			var temp = response.main.temp;
+			var humidity = response.main.humidity;
+			var windSpeed = response.wind.speed;
+			var cityLabel = $("<h2>").html(citySearch);
+			var dateDisplay = $("<h3>").text(date);
+			var weatherIcon = $("<img>").attr({
+				src: "http://openweathermap.org/img/w/" + icon + ".png",
+				alt: weatherMain,
+			});
+			var weatherDesc2 = $("<p>").text(weatherDesc);
+			var tempDisp = $("<p>").text("Temperature: " + temp + "°F");
+			var humidityDisp = $("<p>").text("Humidity: " + humidity + "%");
+			var wind = $("<p>").text("Wind Speed: " + windSpeed + " MPH");
+			var col = $("<div>").attr({
+				class: "col bg-info rounded p-2 m-1"
+			})
+			$(col).append(dateDisplay, weatherIcon, weatherDesc2, tempDisp, humidityDisp, wind, )
+			$("#forecast").append(col);
+
+		};
+	});
+};
+
 function addCityButtons() {
 	$("#cities-searched").empty();
 
@@ -92,8 +136,9 @@ $("#find-city").on("click", function (event) {
 
 	addCityButtons();
 	localStorage.setItem("citiesSearched", JSON.stringify(cityArray));
-	localStorage.setItem("citySearchLast", city)
+	localStorage.setItem("citySearchLast", city);
 })
 
 addCityButtons();
 currentWeather();
+forecastWeather();
