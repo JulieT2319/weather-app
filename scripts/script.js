@@ -65,6 +65,8 @@ function currentWeather() {
 
 
 function forecastWeather() {
+	$("#header").empty();
+	$("#forecast").empty();
 	var forcastWeatherQuery =
 		"https://api.openweathermap.org/data/2.5/forecast?q=" +
 		citySearch +
@@ -132,9 +134,22 @@ $("#find-city").on("click", function (event) {
 			cityArray.push(city);
 		}
 		currentWeather();
+		forecastWeather();
 	}
 
 	addCityButtons();
+	localStorage.setItem("citiesSearched", JSON.stringify(cityArray));
+	localStorage.setItem("citySearchLast", city);
+})
+
+$("#cities-searched").on("click", "button", function () {
+
+	var city = $(this).text();
+	console.log(city);
+	$("#current-weather").empty();
+	citySearch = city;
+	currentWeather();
+	forecastWeather();
 	localStorage.setItem("citiesSearched", JSON.stringify(cityArray));
 	localStorage.setItem("citySearchLast", city);
 })
