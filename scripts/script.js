@@ -52,9 +52,9 @@ function currentWeather() {
 			} else if (parseFloat(uv) <= 7) {
 				uvSpan = "<span class='bg-high rounded p-1'>" + uv + "</span>";
 			} else if (parseFloat(uv) <= 10) {
-				uvSpan = "<span class='bg-danger rounded p-1'>" + uv + "</span>";
+				uvSpan = "<span class='bg-danger rounded p-1 text-white'>" + uv + "</span>";
 			} else {
-				uvSpan = "<span class='bg-extreme rounded p-1'>" + uv + "</span>";
+				uvSpan = "<span class='bg-extreme rounded p-1 text-white'>" + uv + "</span>";
 
 			}
 			var uvDisp = $("<p>").html("UV Index: " + uvSpan)
