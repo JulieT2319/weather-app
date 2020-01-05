@@ -1,5 +1,7 @@
 # Weather App
 
+![Screen shot of weather app](images/weather-app-screenshot.jpg)
+
 ## What it is
 
 This is a web page that allows you to search the weather for any city.

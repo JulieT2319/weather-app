@@ -101,7 +101,7 @@ function forecastWeather() {
 			var humidityDisp = $("<p>").text("Humidity: " + humidity + "%");
 			var wind = $("<p>").text("Wind Speed: " + windSpeed + " MPH");
 			var col = $("<div>").attr({
-				class: "col bg-info rounded p-2 m-1"
+				class: "col-md-2 bg-info rounded p-2 m-1"
 			})
 			$(col).append(dateDisplay, weatherIcon, weatherDesc2, tempDisp, humidityDisp, wind, )
 			$("#forecast").append(col);
@@ -115,7 +115,7 @@ function addCityButtons() {
 
 	for (i = 0; i < cityArray.length; i++) {
 		var city = $("<button>");
-		city.addClass("btn btn-outline-info");
+		city.addClass("btn btn-info m-1 opacity-mid");
 		city.attr("data-city", cityArray[i]);
 		city.text(cityArray[i]);
 		$("#cities-searched").prepend(city);

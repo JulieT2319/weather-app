@@ -17,17 +17,21 @@
 <body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->
-		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">Previously Searched Cities</div>
+		<div class="bg-soft border-right border-info" id="sidebar-wrapper">
+			<div class="sidebar-heading">
+				<h1 class="">
+					Searched Cities
+				</h1>
+			</div>
 			<div class="list-group list-group-flush" id="cities-searched"></div>
 		</div>
 		<!-- /#sidebar-wrapper -->
 
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
-			<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+			<nav class="navbar navbar-expand-lg navbar-light bg-soft border-bottom">
 				<button class="btn" id="menu-toggle">
-					Toggle Previous Searches
+					Previous Searches
 				</button>
 
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -35,10 +39,13 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
+				<div class="w-50 text-center">
+					<h1 class="text-center">Weather Search</h1>
+				</div>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<div class="navbar-nav ml-auto mt-2 mt-lg-0">
 						<form class="form-inline my-2 my-lg-0">
-							<input class="form-control mr-sm-2" type="search" placeholder="City" aria-label="Search" id="city" />
+							<input class="form-control mr-sm-2 w-50" type="search" placeholder="City" aria-label="Search" id="city" />
 							<button class="btn" type="submit" id="find-city">
 								What's the weather?
 							</button>
@@ -78,7 +85,7 @@
 			$("#wrapper").toggleClass("toggled");
 		});
 	</script>
-	s
+
 </body>
 
 </html>
