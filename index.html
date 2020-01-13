@@ -1,91 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Custom styles sidebar template used written by Start Bootstrap -->
+    <link href="styles/simple-sidebar.css" rel="stylesheet" />
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-	<!-- Custom styles sidebar template used written by Start Bootstrap -->
-	<link href="styles/simple-sidebar.css" rel="stylesheet" />
+    <link href="styles/style.css" rel="stylesheet" />
+    <title>Weather Search</title>
+  </head>
 
-	<link href="styles/style.css" rel="stylesheet" />
-	<title>Weather Search</title>
-</head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-soft border-right border-info" id="sidebar-wrapper">
+        <div class="sidebar-heading">
+          <h1 class="">
+            Searched Cities
+          </h1>
+        </div>
+        <div class="list-group list-group-flush" id="cities-searched"></div>
+      </div>
+      <!-- /#sidebar-wrapper -->
 
-<body>
-	<div class="d-flex" id="wrapper">
-		<!-- Sidebar -->
-		<div class="bg-soft border-right border-info" id="sidebar-wrapper">
-			<div class="sidebar-heading">
-				<h1 class="">
-					Searched Cities
-				</h1>
-			</div>
-			<div class="list-group list-group-flush" id="cities-searched"></div>
-		</div>
-		<!-- /#sidebar-wrapper -->
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-soft border-bottom">
+          <button class="btn" id="menu-toggle">
+            Previous Searches
+          </button>
 
-		<!-- Page Content -->
-		<div id="page-content-wrapper">
-			<nav class="navbar navbar-expand-lg navbar-light bg-soft border-bottom">
-				<button class="btn" id="menu-toggle">
-					Previous Searches
-				</button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
+          <div class="w-50 text-center">
+            <h1 class="text-center">Weather Search</h1>
+          </div>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav ml-auto mt-2 mt-lg-0">
+              <form class="form-inline my-2 my-lg-0">
+                <input
+                  class="form-control mr-sm-2 w-50"
+                  type="search"
+                  placeholder="City"
+                  aria-label="Search"
+                  id="city"
+                />
+                <button class="btn" type="submit" id="find-city">
+                  What's the weather?
+                </button>
+              </form>
+            </div>
+          </div>
+        </nav>
+        <div class="container-fluid m-1">
+          <div class="row">
+            <div class="col-12 bg-light" id="current-weather"></div>
+          </div>
+          <div class="row" id="header"></div>
+          <div class="row" id="forecast"></div>
+        </div>
+      </div>
+      <!-- /#page-content-wrapper -->
+    </div>
+    <!-- Menu Toggle Script -->
 
-				<div class="w-50 text-center">
-					<h1 class="text-center">Weather Search</h1>
-				</div>
-				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<div class="navbar-nav ml-auto mt-2 mt-lg-0">
-						<form class="form-inline my-2 my-lg-0">
-							<input class="form-control mr-sm-2 w-50" type="search" placeholder="City" aria-label="Search" id="city" />
-							<button class="btn" type="submit" id="find-city">
-								What's the weather?
-							</button>
-						</form>
-					</div>
-				</div>
-			</nav>
-			<div class="container-fluid m-1">
-				<div class="row">
-					<div class="col-12" id="current-weather" class="bg-secondary">
-
-					</div>
-				</div>
-				<div class="row" id="header">
-				</div>
-				<div class="row" id="forecast">
-				</div>
-			</div>
-		</div>
-		<!-- /#page-content-wrapper -->
-	</div>
-	<!-- Menu Toggle Script -->
-
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
-		integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
-	</script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
-	<script src="scripts/script.js"></script>
-	<script>
-		$("#menu-toggle").click(function (e) {
-			e.preventDefault();
-			$("#wrapper").toggleClass("toggled");
-		});
-	</script>
-
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+    <script src="scripts/script.js"></script>
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+    </script>
+  </body>
 </html>
